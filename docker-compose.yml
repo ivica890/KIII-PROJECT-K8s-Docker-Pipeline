@@ -15,7 +15,7 @@ services:
     restart: always
 
   spring-boot-app:
-    build: .
+    image: "ivica890/spring-boot-app"
     container_name: "kii-project-spring-boot"
     ports:
       - "8080:8080"
