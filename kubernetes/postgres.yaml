@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: db-configmap
-  namespace: kiii-proekt
+  name: pg-configmap
+  namespace: kiii
 data:
   POSTGRES_DB: "kiii"
   POSTGRES_USER: "postgres"
@@ -12,8 +12,8 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: db-secrets
-  namespace: kiii-proekt
+  name: pg-secrets
+  namespace: kiii
 type: Opaque
 data:
   POSTGRES_PASSWORD: cG9zdGdyZXM=
@@ -24,7 +24,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: db-pvc
-  namespace: kiii-proekt
+  namespace: kiii
   labels:
     app: postgres
 spec:
@@ -41,7 +41,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: postgres-sts
-  namespace: kiii-proekt
+  namespace: kiii
 spec:
   serviceName: db-service
   selector:
@@ -52,7 +52,7 @@ spec:
     metadata:
       labels:
         app: postgres
-        namespace: kiii-proekt
+        namespace: kiii
     spec:
       containers:
         - name: postgres
@@ -61,17 +61,17 @@ spec:
             - name: POSTGRES_DB
               valueFrom:
                 configMapKeyRef:
-                  name: db-configmap
+                  name: pg-configmap
                   key: POSTGRES_DB
             - name: POSTGRES_USER
               valueFrom:
                 configMapKeyRef:
-                  name: db-configmap
+                  name: pg-configmap
                   key: POSTGRES_USER
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: db-secrets
+                  name: pg-secrets
                   key: POSTGRES_PASSWORD
           ports:
             - containerPort: 5432
@@ -89,7 +89,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: db-service
-  namespace: kiii-proekt
+  namespace: kiii
 spec:
   selector:
     app: postgres

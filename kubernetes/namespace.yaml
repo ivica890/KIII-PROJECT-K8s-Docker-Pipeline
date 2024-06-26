@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: kiii-proekt
+  name: kiii
   labels:
-    name: kiii-proekt
+    name: kiii
   

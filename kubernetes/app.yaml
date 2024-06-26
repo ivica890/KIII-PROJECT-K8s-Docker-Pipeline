@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: app-configmap
-  namespace: kiii-proekt
+  namespace: kiii
 data:
   SPRING_DATASOURCE_URL: "jdbc:postgresql://db-service:5432/kiii"
   SPRING_DATASOURCE_USERNAME: "postgres"
@@ -13,7 +13,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: app-secrets
-  namespace: kiii-proekt
+  namespace: kiii
 type: Opaque
 data:
   SPRING_DATASOURCE_PASSWORD: cG9zdGdyZXM=
@@ -23,7 +23,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kiii-app-deploy
-  namespace: kiii-proekt
+  namespace: kiii
 spec:
   replicas: 1
   selector:
@@ -63,7 +63,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: app-service
-  namespace: kiii-proekt
+  namespace: kiii
 spec:
   selector:
     app: kiii-app
