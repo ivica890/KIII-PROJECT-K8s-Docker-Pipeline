@@ -37,18 +37,18 @@ public class ConfigClass {
             StudentCity studentCity3 = new StudentCity("Skopje",1000);
             studentCityRepository.save(studentCity3);
 
-            Student student1 = new Student("Ivica","Cickoski","icickoski@gmail.com",course1,studentCity1);
+            Student student1 = new Student("Student","Student","icickoski@gmail.com",course1,studentCity1);
             studentRepository.save(student1);
-            Student student2 = new Student("Luka","Cickoski","lcickoski@gmail.com",course3,studentCity2);
+            Student student2 = new Student("Student1","Student1","ivicacickoski@gmail.com",course3,studentCity2);
             studentRepository.save(student2);
-            Student student3 = new Student("Tony","Montana","tony@gmail.com",course2,studentCity3);
+            Student student3 = new Student("Student2","Student2","tony@gmail.com",course2,studentCity3);
             studentRepository.save(student3);
 
-            Teacher teacher1 = new Teacher("Mende","Mende", List.of(course1,course2));
+            Teacher teacher1 = new Teacher("Teacher","Teacher", List.of(course1,course2));
             teacherRepository.save(teacher1);
-            Teacher teacher2 = new Teacher("Cane","Pelister",List.of(course3));
+            Teacher teacher2 = new Teacher("Teacher1","Teacher1",List.of(course3));
             teacherRepository.save(teacher2);
-            Teacher teacher3 = new Teacher("Ronaldo","SIIIIU",List.of(course2));
+            Teacher teacher3 = new Teacher("Teacher2","Teacher2",List.of(course2));
             teacherRepository.save(teacher3);
 
             Course course4 = new Course("SP",6);
